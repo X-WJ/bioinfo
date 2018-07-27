@@ -1,0 +1,348 @@
+for i in 'ls /nas3/yinjl_SRA_download/5/*.sra'
+do
+x=${i/.sra/}
+echo "/home/madongfang/sratoolkit.2.9.1-1-centos_linux64/bin/fastq-dump --split-files --gzip -O /nas3/yinjl_SRA_download/5 $i"
+done
+
+
+for i in 'ls /nas3/yinjl_SRA_download/6/*.sra'
+do
+x=${i/.sra/}
+echo "pfastq-dump --threads 7 --split-3 --origfmt --gzip -O /nas3/yinjl_SRA_download/6 $i"
+done
+
+
+for i in 'ls /nas3/yinjl_SRA_download/6/*.sra'
+do
+x=${i/.sra/}
+echo "hisat2 -p 16 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc $i -S /nas4/xwj/6/$x.sam 2> /nas4/xwj/6/$x.log"
+done
+
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o ./SRR4085446.bam ./SRR4085446.sam
+
+
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/7/SRR1714932.sra -S /nas4/xwj/7/SRR1714932.sam 2> /nas4/xwj/7/SRR1714932.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/7/SRR1722390.sra -S /nas4/xwj/7/SRR1722390.sam 2> /nas4/xwj/7/SRR1722390.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/7/SRR1722393.sra -S /nas4/xwj/7/SRR1722393.sam 2> /nas4/xwj/7/SRR1722393.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/7/SRR1728119.sra -S /nas4/xwj/7/SRR1728119.sam 2> /nas4/xwj/7/SRR1728119.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/7/SRR1728120.sra -S /nas4/xwj/7/SRR1728120.sam 2> /nas4/xwj/7/SRR1728120.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/7/SRR1731531.sra -S /nas4/xwj/7/SRR1731531.sam 2> /nas4/xwj/7/SRR1731531.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/7/SRR1731532.sra -S /nas4/xwj/7/SRR1731532.sam 2> /nas4/xwj/7/SRR1731532.log 
+
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/7/SRR1714932.bam /nas4/xwj/7/SRR1714932.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/7/SRR1722390.bam /nas4/xwj/7/SRR1722390.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/7/SRR1722393.bam /nas4/xwj/7/SRR1722393.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/7/SRR1728119.bam /nas4/xwj/7/SRR1728119.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/7/SRR1728120.bam /nas4/xwj/7/SRR1728120.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/7/SRR1731531.bam /nas4/xwj/7/SRR1731531.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/7/SRR1731532.bam /nas4/xwj/7/SRR1731532.sam
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/0/SRR6367518.sra -S /nas4/xwj/0/SRR6367518.sam 2> /nas4/xwj/0/SRR6367518.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/0/SRR6367519.sra -S /nas4/xwj/0/SRR6367519.sam 2> /nas4/xwj/0/SRR6367519.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/0/SRR6367520.sra -S /nas4/xwj/0/SRR6367520.sam 2> /nas4/xwj/0/SRR6367520.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/0/SRR6367521.sra -S /nas4/xwj/0/SRR6367521.sam 2> /nas4/xwj/0/SRR6367521.log
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/0/SRR6367518.bam /nas4/xwj/0/SRR6367518.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/0/SRR6367519.bam /nas4/xwj/0/SRR6367519.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/0/SRR6367520.bam /nas4/xwj/0/SRR6367520.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/0/SRR6367521.bam /nas4/xwj/0/SRR6367521.sam
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/1/SRR5747843.sra -S /nas4/xwj/1/SRR5747843.sam 2> /nas4/xwj/1/SRR5747843.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/1/SRR5747845.sra -S /nas4/xwj/1/SRR5747845.sam 2> /nas4/xwj/1/SRR5747845.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/1/SRR5747846.sra -S /nas4/xwj/1/SRR5747846.sam 2> /nas4/xwj/1/SRR5747846.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/1/SRR5747847.sra -S /nas4/xwj/1/SRR5747847.sam 2> /nas4/xwj/1/SRR5747847.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/1/SRR5747848.sra -S /nas4/xwj/1/SRR5747848.sam 2> /nas4/xwj/1/SRR5747848.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/1/SRR5747853.sra -S /nas4/xwj/1/SRR5747853.sam 2> /nas4/xwj/1/SRR5747853.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/1/SRR5747854.sra -S /nas4/xwj/1/SRR5747854.sam 2> /nas4/xwj/1/SRR5747854.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/1/SRR5747857.sra -S /nas4/xwj/1/SRR5747857.sam 2> /nas4/xwj/1/SRR5747857.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/1/SRR5747859.sra -S /nas4/xwj/1/SRR5747859.sam 2> /nas4/xwj/1/SRR5747859.log
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/1/SRR5747843.bam /nas4/xwj/1/SRR5747843.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/1/SRR5747845.bam /nas4/xwj/1/SRR5747845.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/1/SRR5747846.bam /nas4/xwj/1/SRR5747846.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/1/SRR5747847.bam /nas4/xwj/1/SRR5747847.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/1/SRR5747848.bam /nas4/xwj/1/SRR5747848.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/1/SRR5747853.bam /nas4/xwj/1/SRR5747853.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/1/SRR5747854.bam /nas4/xwj/1/SRR5747854.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/1/SRR5747857.bam /nas4/xwj/1/SRR5747857.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/1/SRR5747859.bam /nas4/xwj/1/SRR5747859.sam
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383650.sra -S /nas4/xwj/2/SRR5383650.sam 2> /nas4/xwj/2/SRR5383650.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383900.sra -S /nas4/xwj/2/SRR5383900.sam 2> /nas4/xwj/2/SRR5383900.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383901.sra -S /nas4/xwj/2/SRR5383901.sam 2> /nas4/xwj/2/SRR5383901.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383933.sra -S /nas4/xwj/2/SRR5383933.sam 2> /nas4/xwj/2/SRR5383933.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383934.sra -S /nas4/xwj/2/SRR5383934.sam 2> /nas4/xwj/2/SRR5383934.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383935.sra -S /nas4/xwj/2/SRR5383935.sam 2> /nas4/xwj/2/SRR5383935.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383936.sra -S /nas4/xwj/2/SRR5383936.sam 2> /nas4/xwj/2/SRR5383936.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383938.sra -S /nas4/xwj/2/SRR5383938.sam 2> /nas4/xwj/2/SRR5383938.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383941.sra -S /nas4/xwj/2/SRR5383941.sam 2> /nas4/xwj/2/SRR5383941.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383944.sra -S /nas4/xwj/2/SRR5383944.sam 2> /nas4/xwj/2/SRR5383944.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383945.sra -S /nas4/xwj/2/SRR5383945.sam 2> /nas4/xwj/2/SRR5383945.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383947.sra -S /nas4/xwj/2/SRR5383947.sam 2> /nas4/xwj/2/SRR5383947.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383948.sra -S /nas4/xwj/2/SRR5383948.sam 2> /nas4/xwj/2/SRR5383948.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383950.sra -S /nas4/xwj/2/SRR5383950.sam 2> /nas4/xwj/2/SRR5383950.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383952.sra -S /nas4/xwj/2/SRR5383952.sam 2> /nas4/xwj/2/SRR5383952.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383954.sra -S /nas4/xwj/2/SRR5383954.sam 2> /nas4/xwj/2/SRR5383954.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383955.sra -S /nas4/xwj/2/SRR5383955.sam 2> /nas4/xwj/2/SRR5383955.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383957.sra -S /nas4/xwj/2/SRR5383957.sam 2> /nas4/xwj/2/SRR5383957.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383959.sra -S /nas4/xwj/2/SRR5383959.sam 2> /nas4/xwj/2/SRR5383959.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383962.sra -S /nas4/xwj/2/SRR5383962.sam 2> /nas4/xwj/2/SRR5383962.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383963.sra -S /nas4/xwj/2/SRR5383963.sam 2> /nas4/xwj/2/SRR5383963.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383964.sra -S /nas4/xwj/2/SRR5383964.sam 2> /nas4/xwj/2/SRR5383964.log
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383650.bam /nas4/xwj/2/SRR5383650.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383900.bam /nas4/xwj/2/SRR5383900.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383901.bam /nas4/xwj/2/SRR5383901.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383933.bam /nas4/xwj/2/SRR5383933.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383934.bam /nas4/xwj/2/SRR5383934.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383935.bam /nas4/xwj/2/SRR5383935.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383936.bam /nas4/xwj/2/SRR5383936.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383938.bam /nas4/xwj/2/SRR5383938.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383941.bam /nas4/xwj/2/SRR5383941.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383944.bam /nas4/xwj/2/SRR5383944.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383945.bam /nas4/xwj/2/SRR5383945.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383947.bam /nas4/xwj/2/SRR5383947.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383948.bam /nas4/xwj/2/SRR5383948.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383950.bam /nas4/xwj/2/SRR5383950.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383952.bam /nas4/xwj/2/SRR5383952.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383954.bam /nas4/xwj/2/SRR5383954.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383955.bam /nas4/xwj/2/SRR5383955.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383957.bam /nas4/xwj/2/SRR5383957.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383959.bam /nas4/xwj/2/SRR5383959.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383962.bam /nas4/xwj/2/SRR5383962.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383963.bam /nas4/xwj/2/SRR5383963.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383964.bam /nas4/xwj/2/SRR5383964.sam
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/3/SRR5317866.sra -S /nas4/xwj/3/SRR5317866.sam 2> /nas4/xwj/3/SRR5317866.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/3/SRR5317867.sra -S /nas4/xwj/3/SRR5317867.sam 2> /nas4/xwj/3/SRR5317867.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/3/SRR5317868.sra -S /nas4/xwj/3/SRR5317868.sam 2> /nas4/xwj/3/SRR5317868.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/3/SRR5317869.sra -S /nas4/xwj/3/SRR5317869.sam 2> /nas4/xwj/3/SRR5317869.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/3/SRR5317870.sra -S /nas4/xwj/3/SRR5317870.sam 2> /nas4/xwj/3/SRR5317870.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/3/SRR5317871.sra -S /nas4/xwj/3/SRR5317871.sam 2> /nas4/xwj/3/SRR5317871.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/3/SRR5317872.sra -S /nas4/xwj/3/SRR5317872.sam 2> /nas4/xwj/3/SRR5317872.log
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/3/SRR5317873.sra -S /nas4/xwj/3/SRR5317873.sam 2> /nas4/xwj/3/SRR5317873.log
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/3/SRR5317866.bam /nas4/xwj/3/SRR5317866.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/3/SRR5317867.bam /nas4/xwj/3/SRR5317867.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/3/SRR5317868.bam /nas4/xwj/3/SRR5317868.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/3/SRR5317869.bam /nas4/xwj/3/SRR5317869.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/3/SRR5317870.bam /nas4/xwj/3/SRR5317870.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/3/SRR5317871.bam /nas4/xwj/3/SRR5317871.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/3/SRR5317872.bam /nas4/xwj/3/SRR5317872.sam
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/3/SRR5317873.bam /nas4/xwj/3/SRR5317873.sam
+
+
+
+
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383960.sra -S /nas4/xwj/2/SRR5383960.sam 2> /nas4/xwj/2/SRR5383960.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/2/SRR5383961.sra -S /nas4/xwj/2/SRR5383961.sam 2> /nas4/xwj/2/SRR5383961.log 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383960.bam /nas4/xwj/2/SRR5383960.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/2/SRR5383961.bam /nas4/xwj/2/SRR5383961.sam 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/4/SRR4217450.sra -S /nas4/xwj/4/SRR4217450.sam 2> /nas4/xwj/4/SRR4217450.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/4/SRR4217451.sra -S /nas4/xwj/4/SRR4217451.sam 2> /nas4/xwj/4/SRR4217451.log 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/4/SRR4217450.bam /nas4/xwj/4/SRR4217450.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/4/SRR4217451.bam /nas4/xwj/4/SRR4217451.sam 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/8/SRR1542407.sra -S /nas4/xwj/8/SRR1542407.sam 2> /nas4/xwj/8/SRR1542407.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/8/SRR1542411.sra -S /nas4/xwj/8/SRR1542411.sam 2> /nas4/xwj/8/SRR1542411.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/8/SRR1542415.sra -S /nas4/xwj/8/SRR1542415.sam 2> /nas4/xwj/8/SRR1542415.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/8/SRR1542404.sra -S /nas4/xwj/8/SRR1542404.sam 2> /nas4/xwj/8/SRR1542404.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/8/SRR1542408.sra -S /nas4/xwj/8/SRR1542408.sam 2> /nas4/xwj/8/SRR1542408.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/8/SRR1542412.sra -S /nas4/xwj/8/SRR1542412.sam 2> /nas4/xwj/8/SRR1542412.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/8/SRR1542416.sra -S /nas4/xwj/8/SRR1542416.sam 2> /nas4/xwj/8/SRR1542416.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/8/SRR1542405.sra -S /nas4/xwj/8/SRR1542405.sam 2> /nas4/xwj/8/SRR1542405.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/8/SRR1542409.sra -S /nas4/xwj/8/SRR1542409.sam 2> /nas4/xwj/8/SRR1542409.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/8/SRR1542413.sra -S /nas4/xwj/8/SRR1542413.sam 2> /nas4/xwj/8/SRR1542413.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/8/SRR1542417.sra -S /nas4/xwj/8/SRR1542417.sam 2> /nas4/xwj/8/SRR1542417.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/8/SRR1542406.sra -S /nas4/xwj/8/SRR1542406.sam 2> /nas4/xwj/8/SRR1542406.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/8/SRR1542410.sra -S /nas4/xwj/8/SRR1542410.sam 2> /nas4/xwj/8/SRR1542410.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/8/SRR1542414.sra -S /nas4/xwj/8/SRR1542414.sam 2> /nas4/xwj/8/SRR1542414.log 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/8/SRR1542407.bam /nas4/xwj/8/SRR1542407.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/8/SRR1542411.bam /nas4/xwj/8/SRR1542411.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/8/SRR1542415.bam /nas4/xwj/8/SRR1542415.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/8/SRR1542404.bam /nas4/xwj/8/SRR1542404.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/8/SRR1542408.bam /nas4/xwj/8/SRR1542408.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/8/SRR1542412.bam /nas4/xwj/8/SRR1542412.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/8/SRR1542416.bam /nas4/xwj/8/SRR1542416.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/8/SRR1542405.bam /nas4/xwj/8/SRR1542405.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/8/SRR1542409.bam /nas4/xwj/8/SRR1542409.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/8/SRR1542413.bam /nas4/xwj/8/SRR1542413.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/8/SRR1542417.bam /nas4/xwj/8/SRR1542417.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/8/SRR1542406.bam /nas4/xwj/8/SRR1542406.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/8/SRR1542410.bam /nas4/xwj/8/SRR1542410.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/8/SRR1542414.bam /nas4/xwj/8/SRR1542414.sam 
+
+
+
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/6/SRR2306559.sra -S /nas4/xwj/6/SRR2306559.sam 2> /nas4/xwj/6/SRR2306559.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/6/SRR2306556.sra -S /nas4/xwj/6/SRR2306556.sam 2> /nas4/xwj/6/SRR2306556.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/6/SRR2306555.sra -S /nas4/xwj/6/SRR2306555.sam 2> /nas4/xwj/6/SRR2306555.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/6/SRR2306553.sra -S /nas4/xwj/6/SRR2306553.sam 2> /nas4/xwj/6/SRR2306553.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/6/SRR2306551.sra -S /nas4/xwj/6/SRR2306551.sam 2> /nas4/xwj/6/SRR2306551.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/6/SRR2306548.sra -S /nas4/xwj/6/SRR2306548.sam 2> /nas4/xwj/6/SRR2306548.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/6/SRR2306547.sra -S /nas4/xwj/6/SRR2306547.sam 2> /nas4/xwj/6/SRR2306547.log 
+hisat2 -p 36 -x /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta --dta-cufflinks --known-splicesite-infile /share/nas1/madongfang/genome/wheat_hisat2_build_large/genome.ss --time --sra-acc /nas3/yinjl_SRA_download/6/SRR2306546.sra -S /nas4/xwj/6/SRR2306546.sam 2> /nas4/xwj/6/SRR2306546.log 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/6/SRR2306559.bam /nas4/xwj/6/SRR2306559.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/6/SRR2306556.bam /nas4/xwj/6/SRR2306556.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/6/SRR2306555.bam /nas4/xwj/6/SRR2306555.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/6/SRR2306553.bam /nas4/xwj/6/SRR2306553.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/6/SRR2306551.bam /nas4/xwj/6/SRR2306551.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/6/SRR2306548.bam /nas4/xwj/6/SRR2306548.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/6/SRR2306547.bam /nas4/xwj/6/SRR2306547.sam 
+/share/nas1/genome/biosoft/samtools/bin/samtools sort -@ 36 -o /nas4/xwj/6/SRR2306546.bam /nas4/xwj/6/SRR2306546.sam 
+
+
+
+cuffdiff -o /nas4/xwj/cuffdiff_out -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -p 20 -T -L Salt_Root_of_Seeding,Salt_Leaf_of_Seeding,CK_Root_of_Seeding,CK_Leaf_of_Seeding,CK_Leaf,Drought_Leaf_2h,Drought_Leaf_7h,CK_Ear_of_GrainFormation,Drough_Ear_of_GrainFormation,CK_Ear_of_Flowering,Drough_Ear_of_Flowering,Drough_Leaf_of_Booting,Drough_Leaf_of_AntherDdifferentiation,NaHS_PEG_Leaf_24h,PEG_Leaf_24h,NaHS_Leaf_24h,CK_Leaf_24h,CK_Leaf,CK_Root,Salt_Leaf,Salt_Root,Na_48h_QM6,CK_48h_QM6,Na_24h_QM6,Na_12h_QM6,CK_24h_QM6,CK_12h_QM6,Na_6h_QM6,CK_6h_QM6,Na_48h_ChineseSpring,CK_48h_ChineseSpring,Na_24h_ChineseSpring,Na_12h_ChineseSpring,CK_24h_ChineseSpring,CK_12h_ChineseSpring,Na_6h_ChineseSpring,CK_6h_ChineseSpring,Heat_at_GrainFilling_HD29,CK_at_GrainFilling_HD29,Heat_at_GrainFilling_HD85,CK_at_GrainFilling_HD85,Heat_Drought_6h,Heat_Drought_1h,Heat_6h,Heat_1h,Drought_6h,Drought_1h,CK1 -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 --total-hits-norm /nas4/xwj/0/SRR6367521.bam /nas4/xwj/0/SRR6367520.bam /nas4/xwj/0/SRR6367519.bam /nas4/xwj/0/SRR6367518.bam /nas4/xwj/1/SRR5747853.bam,/nas4/xwj/1/SRR5747854.bam,/nas4/xwj/1/SRR5747845.bam /nas4/xwj/1/SRR5747848.bam,/nas4/xwj/1/SRR5747843.bam,/nas4/xwj/1/SRR5747846.bam /nas4/xwj/1/SRR5747859.bam,/nas4/xwj/1/SRR5747857.bam,/nas4/xwj/1/SRR5747847.bam /nas4/xwj/2/SRR5383964.bam,/nas4/xwj/2/SRR5383963.bam,/nas4/xwj/2/SRR5383962.bam /nas4/xwj/2/SRR5383961.bam,/nas4/xwj/2/SRR5383960.bam,/nas4/xwj/2/SRR5383959.bam /nas4/xwj/2/SRR5383957.bam,/nas4/xwj/2/SRR5383955.bam,/nas4/xwj/2/SRR5383954.bam /nas4/xwj/2/SRR5383952.bam,/nas4/xwj/2/SRR5383950.bam,/nas4/xwj/2/SRR5383948.bam /nas4/xwj/2/SRR5383947.bam,/nas4/xwj/2/SRR5383945.bam,/nas4/xwj/2/SRR5383944.bam /nas4/xwj/2/SRR5383935.bam,/nas4/xwj/2/SRR5383934.bam,/nas4/xwj/2/SRR5383933.bam /nas4/xwj/3/SRR5317873.bam,/nas4/xwj/3/SRR5317872.bam /nas4/xwj/3/SRR5317871.bam,/nas4/xwj/3/SRR5317870.bam /nas4/xwj/3/SRR5317869.bam,/nas4/xwj/3/SRR5317868.bam /nas4/xwj/3/SRR5317867.bam,/nas4/xwj/3/SRR5317866.bam /nas4/xwj/5/SRR4067818.bam /nas4/xwj/5/SRR4085446.bam /nas4/xwj/5/SRR4085101.bam /nas4/xwj/5/SRR4086039.bam /nas4/xwj/6/SRR2306560.bam /nas4/xwj/6/SRR2306559.bam /nas4/xwj/6/SRR2306558.bam /nas4/xwj/6/SRR2306557.bam /nas4/xwj/6/SRR2306556.bam /nas4/xwj/6/SRR2306555.bam /nas4/xwj/6/SRR2306554.bam /nas4/xwj/6/SRR2306553.bam /nas4/xwj/6/SRR2306552.bam /nas4/xwj/6/SRR2306551.bam /nas4/xwj/6/SRR2306550.bam /nas4/xwj/6/SRR2306549.bam /nas4/xwj/6/SRR2306548.bam /nas4/xwj/6/SRR2306547.bam /nas4/xwj/6/SRR2306546.bam /nas4/xwj/6/SRR2306545.bam /nas4/xwj/7/SRR1731532.bam,/nas4/xwj/7/SRR1731531.bam /nas4/xwj/7/SRR1728120.bam,/nas4/xwj/7/SRR1728119.bam /nas4/xwj/7/SRR1722393.bam,/nas4/xwj/7/SRR1722390.bam /nas4/xwj/7/SRR1714932.bam,/nas4/xwj/7/SRR1714874.bam /nas4/xwj/8/SRR1542417.bam,/nas4/xwj/8/SRR1542416.bam /nas4/xwj/8/SRR1542415.bam,/nas4/xwj/8/SRR1542414.bam /nas4/xwj/8/SRR1542413.bam,/nas4/xwj/8/SRR1542412.bam /nas4/xwj/8/SRR1542411.bam,/nas4/xwj/8/SRR1542410.bam /nas4/xwj/8/SRR1542409.bam,/nas4/xwj/8/SRR1542408.bam /nas4/xwj/8/SRR1542407.bam,/nas4/xwj/8/SRR1542406.bam /nas4/xwj/8/SRR1542405.bam,/nas4/xwj/8/SRR1542404.bam
+cuffnorm -o /nas4/xwj/cuffnorm_out -p 20 -L Salt_Root_of_Seeding,Salt_Leaf_of_Seeding,CK_Root_of_Seeding,CK_Leaf_of_Seeding,CK_Leaf,Drought_Leaf_2h,Drought_Leaf_7h,CK_Ear_of_GrainFormation,Drough_Ear_of_GrainFormation,CK_Ear_of_Flowering,Drough_Ear_of_Flowering,Drough_Leaf_of_Booting,Drough_Leaf_of_AntherDdifferentiation,NaHS_PEG_Leaf_24h,PEG_Leaf_24h,NaHS_Leaf_24h,CK_Leaf_24h,CK_Leaf,CK_Root,Salt_Leaf,Salt_Root,Na_48h_QM6,CK_48h_QM6,Na_24h_QM6,Na_12h_QM6,CK_24h_QM6,CK_12h_QM6,Na_6h_QM6,CK_6h_QM6,Na_48h_ChineseSpring,CK_48h_ChineseSpring,Na_24h_ChineseSpring,Na_12h_ChineseSpring,CK_24h_ChineseSpring,CK_12h_ChineseSpring,Na_6h_ChineseSpring,CK_6h_ChineseSpring,Heat_at_GrainFilling_HD29,CK_at_GrainFilling_HD29,Heat_at_GrainFilling_HD85,CK_at_GrainFilling_HD85,Heat_Drought_6h,Heat_Drought_1h,Heat_6h,Heat_1h,Drought_6h,Drought_1h,CK1 /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/0/SRR6367521/abundances.cxb /nas4/xwj/0/SRR6367520/abundances.cxb /nas4/xwj/0/SRR6367519/abundances.cxb /nas4/xwj/0/SRR6367518/abundances.cxb /nas4/xwj/1/SRR5747853/abundances.cxb,/nas4/xwj/1/SRR5747854/abundances.cxb,/nas4/xwj/1/SRR5747845/abundances.cxb /nas4/xwj/1/SRR5747848/abundances.cxb,/nas4/xwj/1/SRR5747843/abundances.cxb,/nas4/xwj/1/SRR5747846/abundances.cxb /nas4/xwj/1/SRR5747859/abundances.cxb,/nas4/xwj/1/SRR5747857/abundances.cxb,/nas4/xwj/1/SRR5747847/abundances.cxb /nas4/xwj/2/SRR5383964/abundances.cxb,/nas4/xwj/2/SRR5383963/abundances.cxb,/nas4/xwj/2/SRR5383962/abundances.cxb /nas4/xwj/2/SRR5383961/abundances.cxb,/nas4/xwj/2/SRR5383960/abundances.cxb,/nas4/xwj/2/SRR5383959/abundances.cxb /nas4/xwj/2/SRR5383957/abundances.cxb,/nas4/xwj/2/SRR5383955/abundances.cxb,/nas4/xwj/2/SRR5383954/abundances.cxb /nas4/xwj/2/SRR5383952/abundances.cxb,/nas4/xwj/2/SRR5383950/abundances.cxb,/nas4/xwj/2/SRR5383948/abundances.cxb /nas4/xwj/2/SRR5383947/abundances.cxb,/nas4/xwj/2/SRR5383945/abundances.cxb,/nas4/xwj/2/SRR5383944/abundances.cxb /nas4/xwj/2/SRR5383935/abundances.cxb,/nas4/xwj/2/SRR5383934/abundances.cxb,/nas4/xwj/2/SRR5383933/abundances.cxb /nas4/xwj/3/SRR5317873/abundances.cxb,/nas4/xwj/3/SRR5317872/abundances.cxb /nas4/xwj/3/SRR5317871/abundances.cxb,/nas4/xwj/3/SRR5317870/abundances.cxb /nas4/xwj/3/SRR5317869/abundances.cxb,/nas4/xwj/3/SRR5317868/abundances.cxb /nas4/xwj/3/SRR5317867/abundances.cxb,/nas4/xwj/3/SRR5317866/abundances.cxb /nas4/xwj/5/SRR4067818/abundances.cxb /nas4/xwj/5/SRR4085446/abundances.cxb /nas4/xwj/5/SRR4085101/abundances.cxb /nas4/xwj/5/SRR4086039/abundances.cxb /nas4/xwj/6/SRR2306560/abundances.cxb /nas4/xwj/6/SRR2306559/abundances.cxb /nas4/xwj/6/SRR2306558/abundances.cxb /nas4/xwj/6/SRR2306557/abundances.cxb /nas4/xwj/6/SRR2306556/abundances.cxb /nas4/xwj/6/SRR2306555/abundances.cxb /nas4/xwj/6/SRR2306554/abundances.cxb /nas4/xwj/6/SRR2306553/abundances.cxb /nas4/xwj/6/SRR2306552/abundances.cxb /nas4/xwj/6/SRR2306551/abundances.cxb /nas4/xwj/6/SRR2306550/abundances.cxb /nas4/xwj/6/SRR2306549/abundances.cxb /nas4/xwj/6/SRR2306548/abundances.cxb /nas4/xwj/6/SRR2306547/abundances.cxb /nas4/xwj/6/SRR2306546/abundances.cxb /nas4/xwj/6/SRR2306545/abundances.cxb /nas4/xwj/7/SRR1731532/abundances.cxb,/nas4/xwj/7/SRR1731531/abundances.cxb /nas4/xwj/7/SRR1728120/abundances.cxb,/nas4/xwj/7/SRR1728119/abundances.cxb /nas4/xwj/7/SRR1722393/abundances.cxb,/nas4/xwj/7/SRR1722390/abundances.cxb /nas4/xwj/7/SRR1714932/abundances.cxb,/nas4/xwj/7/SRR1714874/abundances.cxb /nas4/xwj/8/SRR1542417/abundances.cxb,/nas4/xwj/8/SRR1542416/abundances.cxb /nas4/xwj/8/SRR1542415/abundances.cxb,/nas4/xwj/8/SRR1542414/abundances.cxb /nas4/xwj/8/SRR1542413/abundances.cxb,/nas4/xwj/8/SRR1542412/abundances.cxb /nas4/xwj/8/SRR1542411/abundances.cxb,/nas4/xwj/8/SRR1542410/abundances.cxb /nas4/xwj/8/SRR1542409/abundances.cxb,/nas4/xwj/8/SRR1542408/abundances.cxb /nas4/xwj/8/SRR1542407/abundances.cxb,/nas4/xwj/8/SRR1542406/abundances.cxb /nas4/xwj/8/SRR1542405/abundances.cxb,/nas4/xwj/8/SRR1542404/abundances.cxb
+
+
+cuffquant -o /nas4/xwj/0/SRR6367518 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/0/SRR6367518.bam
+cuffquant -o /nas4/xwj/0/SRR6367519 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/0/SRR6367519.bam
+cuffquant -o /nas4/xwj/0/SRR6367520 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/0/SRR6367520.bam
+cuffquant -o /nas4/xwj/0/SRR6367521 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/0/SRR6367521.bam
+cuffquant -o /nas4/xwj/1/SRR5747843 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/1/SRR5747843.bam
+cuffquant -o /nas4/xwj/1/SRR5747846 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/1/SRR5747846.bam
+cuffquant -o /nas4/xwj/1/SRR5747848 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/1/SRR5747848.bam
+cuffquant -o /nas4/xwj/1/SRR5747854 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/1/SRR5747854.bam
+cuffquant -o /nas4/xwj/1/SRR5747859 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/1/SRR5747859.bam
+cuffquant -o /nas4/xwj/1/SRR5747845 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/1/SRR5747845.bam
+cuffquant -o /nas4/xwj/1/SRR5747847 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/1/SRR5747847.bam
+cuffquant -o /nas4/xwj/1/SRR5747853 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/1/SRR5747853.bam
+cuffquant -o /nas4/xwj/1/SRR5747857 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/1/SRR5747857.bam
+cuffquant -o /nas4/xwj/2/SRR5383936 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/2/SRR5383936.bam
+cuffquant -o /nas4/xwj/2/SRR5383947 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/2/SRR5383947.bam
+cuffquant -o /nas4/xwj/2/SRR5383955 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/2/SRR5383955.bam
+cuffquant -o /nas4/xwj/2/SRR5383962 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/2/SRR5383962.bam
+cuffquant -o /nas4/xwj/2/SRR5383901 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/2/SRR5383901.bam
+cuffquant -o /nas4/xwj/2/SRR5383938 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/2/SRR5383938.bam
+cuffquant -o /nas4/xwj/2/SRR5383948 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/2/SRR5383948.bam
+cuffquant -o /nas4/xwj/2/SRR5383957 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/2/SRR5383957.bam
+cuffquant -o /nas4/xwj/2/SRR5383963 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/2/SRR5383963.bam
+cuffquant -o /nas4/xwj/2/SRR5383933 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/2/SRR5383933.bam
+cuffquant -o /nas4/xwj/2/SRR5383941 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/2/SRR5383941.bam
+cuffquant -o /nas4/xwj/2/SRR5383950 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/2/SRR5383950.bam
+cuffquant -o /nas4/xwj/2/SRR5383959 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/2/SRR5383959.bam
+cuffquant -o /nas4/xwj/2/SRR5383964 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/2/SRR5383964.bam
+cuffquant -o /nas4/xwj/2/SRR5383934 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/2/SRR5383934.bam
+cuffquant -o /nas4/xwj/2/SRR5383944 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/2/SRR5383944.bam
+cuffquant -o /nas4/xwj/2/SRR5383952 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/2/SRR5383952.bam
+cuffquant -o /nas4/xwj/2/SRR5383960 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/2/SRR5383960.bam
+cuffquant -o /nas4/xwj/3/SRR5317866 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/3/SRR5317866.bam
+cuffquant -o /nas4/xwj/3/SRR5317868 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/3/SRR5317868.bam
+cuffquant -o /nas4/xwj/3/SRR5317870 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/3/SRR5317870.bam
+cuffquant -o /nas4/xwj/3/SRR5317872 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/3/SRR5317872.bam
+cuffquant -o /nas4/xwj/3/SRR5317867 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/3/SRR5317867.bam
+cuffquant -o /nas4/xwj/3/SRR5317869 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/3/SRR5317869.bam
+cuffquant -o /nas4/xwj/3/SRR5317871 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/3/SRR5317871.bam
+cuffquant -o /nas4/xwj/3/SRR5317873 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/3/SRR5317873.bam
+cuffquant -o /nas4/xwj/5/SRR4067818 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/5/SRR4067818.bam
+cuffquant -o /nas4/xwj/5/SRR4085101 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/5/SRR4085101.bam
+cuffquant -o /nas4/xwj/5/SRR4085446 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/5/SRR4085446.bam
+cuffquant -o /nas4/xwj/5/SRR4086039 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/5/SRR4086039.bam
+cuffquant -o /nas4/xwj/6/SRR2306545 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/6/SRR2306545.bam
+cuffquant -o /nas4/xwj/6/SRR2306549 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/6/SRR2306549.bam
+cuffquant -o /nas4/xwj/6/SRR2306553 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/6/SRR2306553.bam
+cuffquant -o /nas4/xwj/6/SRR2306557 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/6/SRR2306557.bam
+cuffquant -o /nas4/xwj/6/SRR2306546 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/6/SRR2306546.bam
+cuffquant -o /nas4/xwj/6/SRR2306550 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/6/SRR2306550.bam
+cuffquant -o /nas4/xwj/6/SRR2306554 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/6/SRR2306554.bam
+cuffquant -o /nas4/xwj/6/SRR2306558 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/6/SRR2306558.bam
+cuffquant -o /nas4/xwj/6/SRR2306547 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/6/SRR2306547.bam
+cuffquant -o /nas4/xwj/6/SRR2306551 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/6/SRR2306551.bam
+cuffquant -o /nas4/xwj/6/SRR2306555 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/6/SRR2306555.bam
+cuffquant -o /nas4/xwj/6/SRR2306559 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/6/SRR2306559.bam
+cuffquant -o /nas4/xwj/6/SRR2306548 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/6/SRR2306548.bam
+cuffquant -o /nas4/xwj/6/SRR2306552 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/6/SRR2306552.bam
+cuffquant -o /nas4/xwj/6/SRR2306556 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/6/SRR2306556.bam
+cuffquant -o /nas4/xwj/6/SRR2306560 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/6/SRR2306560.bam
+cuffquant -o /nas4/xwj/7/SRR1714874 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/7/SRR1714874.bam
+cuffquant -o /nas4/xwj/7/SRR1722390 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/7/SRR1722390.bam
+cuffquant -o /nas4/xwj/7/SRR1728119 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/7/SRR1728119.bam
+cuffquant -o /nas4/xwj/7/SRR1731531 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/7/SRR1731531.bam
+cuffquant -o /nas4/xwj/7/SRR1714932 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/7/SRR1714932.bam
+cuffquant -o /nas4/xwj/7/SRR1722393 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/7/SRR1722393.bam
+cuffquant -o /nas4/xwj/7/SRR1728120 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/7/SRR1728120.bam
+cuffquant -o /nas4/xwj/7/SRR1731532 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/7/SRR1731532.bam
+cuffquant -o /nas4/xwj/8/SRR1542404 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/8/SRR1542404.bam
+cuffquant -o /nas4/xwj/8/SRR1542407 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/8/SRR1542407.bam
+cuffquant -o /nas4/xwj/8/SRR1542410 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/8/SRR1542410.bam
+cuffquant -o /nas4/xwj/8/SRR1542413 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/8/SRR1542413.bam
+cuffquant -o /nas4/xwj/8/SRR1542416 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/8/SRR1542416.bam
+cuffquant -o /nas4/xwj/8/SRR1542405 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/8/SRR1542405.bam
+cuffquant -o /nas4/xwj/8/SRR1542408 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/8/SRR1542408.bam
+cuffquant -o /nas4/xwj/8/SRR1542411 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/8/SRR1542411.bam
+cuffquant -o /nas4/xwj/8/SRR1542414 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/8/SRR1542414.bam
+cuffquant -o /nas4/xwj/8/SRR1542417 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/8/SRR1542417.bam
+cuffquant -o /nas4/xwj/8/SRR1542406 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/8/SRR1542406.bam
+cuffquant -o /nas4/xwj/8/SRR1542409 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/8/SRR1542409.bam
+cuffquant -o /nas4/xwj/8/SRR1542412 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/8/SRR1542412.bam
+cuffquant -o /nas4/xwj/8/SRR1542415 -p 36 -b /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /share/nas1/madongfang/genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 /nas4/xwj/8/SRR1542415.bam
+
+
+cuffquant -o ./cuffquant/SRR1228246/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR1228246.bam
+cuffquant -o ./cuffquant/SRR1228247/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR1228247.bam
+cuffquant -o ./cuffquant/SRR1228248/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR1228248.bam
+cuffquant -o ./cuffquant/SRR1228249/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR1228249.bam
+cuffquant -o ./cuffquant/SRR1228250 -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR1228250.bam
+#cuffquant -o ./cuffquant/SRR1228251 -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR1228251.bam
+cuffquant -o ./cuffquant/SRR1228252 -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR1228252.bam
+cuffquant -o ./cuffquant/SRR1228253 -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR1228253.bam
+cuffquant -o ./cuffquant/SRR1228254 -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR1228254.bam
+cuffquant -o ./cuffquant/SRR1228255 -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR1228255.bam
+cuffquant -o ./cuffquant/SRR1228256 -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR1228256.bam
+cuffquant -o ./cuffquant/SRR1228257 -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR1228257.bam
+#cuffquant -o ./cuffquant/SRR1228258 -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR1228258.bam
+cuffquant -o ./cuffquant/SRR1228259 -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR1228259.bam
+cuffquant -o ./cuffquant/SRR1228260 -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR1228260.bam
+cuffquant -o ./cuffquant/SRR1228261 -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR1228261.bam
+cuffquant -o ./cuffquant/SRR1228262 -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR1228262.bam
+cuffquant -o ./cuffquant/SRR1228263 -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR1228263.bam
+cuffquant -o ./cuffquant/SRR1228264 -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR1228264.bam
+cuffquant -o ./cuffquant/SRR1228265 -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR1228265.bam
+
+
+
+#cuffquant -o ./cuffquant/SRR3822098/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR3822098.bam
+cuffquant -o ./cuffquant/SRR3822100/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR3822100.bam
+cuffquant -o ./cuffquant/SRR3822102/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR3822102.bam
+cuffquant -o ./cuffquant/SRR3822104/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR3822104.bam
+cuffquant -o ./cuffquant/SRR3822106/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR3822106.bam
+cuffquant -o ./cuffquant/SRR3822108/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR3822108.bam
+cuffquant -o ./cuffquant/SRR3822110/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR3822110.bam
+#cuffquant -o ./cuffquant/SRR3822112/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR3822112.bam
+
+
+
+
+cuffquant -o ./cuffquant/SRR3721324/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 SRR3721324.bam
+cuffquant -o ./cuffquant/A/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 A.bam
+cuffquant -o ./cuffquant/A/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 A.bam
+cuffquant -o ./cuffquant/A/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 A.bam
+cuffquant -o ./cuffquant/A/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 A.bam
+cuffquant -o ./cuffquant/A/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 A.bam
+cuffquant -o ./cuffquant/A/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 A.bam
+cuffquant -o ./cuffquant/A/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 A.bam
+cuffquant -o ./cuffquant/A/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 A.bam
+cuffquant -o ./cuffquant/A/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 A.bam
+cuffquant -o ./cuffquant/A/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 A.bam
+cuffquant -o ./cuffquant/A/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 A.bam
+cuffquant -o ./cuffquant/A/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 A.bam
+cuffquant -o ./cuffquant/A/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 A.bam
+cuffquant -o ./cuffquant/A/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 A.bam
+cuffquant -o ./cuffquant/A/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 A.bam
+cuffquant -o ./cuffquant/A/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 A.bam
+cuffquant -o ./cuffquant/A/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 A.bam
+cuffquant -o ./cuffquant/A/ -p 36 -b /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.fasta -u /nas3/reference_genome/wheat_hisat2_build_large/iwgsc_refseqv1.0.gff3 A.bam
+
+
+
+
+
+
+
+
+
+SRR3721324.bam
+SRR3721325.bam
+SRR3721326.bam
+SRR3721327.bam
+SRR3721328.bam
+SRR3721329.bam
+SRR3721330.bam
+SRR3721331.bam
+SRR3721332.bam
+SRR3721333.bam
+SRR3721334.bam
+SRR3721335.bam
